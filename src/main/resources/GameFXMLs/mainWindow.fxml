@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ComputerGames.MainWindowController">
+   <children>
+      <MenuBar layoutY="2.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="New Game">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openMineSweeper" text="Minesweeper" />
+                  <MenuItem mnemonicParsing="false" onAction="#openPong" text="Pong" />
+                  <MenuItem mnemonicParsing="false" onAction="#openSnake" text="Snake" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <BorderPane fx:id="mainBoardBorderPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <center>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MainScreen" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
+   </children>
+</AnchorPane>
