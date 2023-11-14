@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -19,8 +18,8 @@ public class PongBoard extends Canvas {
     private static final int PLAYER_HEIGHT = 100;
     private static final int PLAYER_WIDTH = 15;
     private static final double BALL_R = 15;
-    private int ballYSpeed = 1;
-    private int ballXSpeed = 1;
+    private double ballYSpeed = 1;
+    private double ballXSpeed = 1;
     public double playerOneYPos = height/2;
     public double playerTwoYPos = height/2;
     public int playerOneXPos = 0;
@@ -53,19 +52,21 @@ public class PongBoard extends Canvas {
         gc.setFont(Font.font(25));
 
         if (gameStarted) {
+            // move ball based on its speed
             ballXPos+=ballXSpeed;
             ballYPos+=ballYSpeed;
 
-            if (ballXPos < width - width/4 ) {
-                playerTwoYPos = ballYPos - PLAYER_HEIGHT / 2;
+            // computer brain
+            if (ballXPos < width - width/5 ) {
+                    playerTwoYPos = ballYPos - PLAYER_HEIGHT / 2;
             } else {
-                playerTwoYPos = ballYPos > playerTwoYPos + PLAYER_HEIGHT / 2 ? playerTwoYPos += 1: playerTwoYPos - 1;
+                    playerTwoYPos = ballYPos > playerTwoYPos + PLAYER_HEIGHT / 2 ? playerTwoYPos += 2 : playerTwoYPos - 2;
             }
 
+            // draw the ball in the new position
             gc.fillOval(ballXPos, ballYPos, BALL_R, BALL_R);
 
         } else {
-            gc.getStroke();
             gc.setTextAlign(TextAlignment.CENTER);
             gc.strokeText("On Space Bar", width / 2, height / 2);
 
@@ -76,7 +77,7 @@ public class PongBoard extends Canvas {
             ballYSpeed = new Random().nextInt(2) == 0 ? 1: -1;
         }
 
-        if (ballYPos > height || ballYPos < 0) ballYSpeed *= -1;
+        if (ballYPos > (height-BALL_R)  || ballYPos < 0) ballYSpeed *= -1;
 
         //if you miss the ball, computer gets a point
         if(ballXPos < playerOneXPos - PLAYER_WIDTH) {
@@ -93,10 +94,10 @@ public class PongBoard extends Canvas {
         //increase the speed after the ball hits the player
         if( ((ballXPos + BALL_R > playerTwoXPos) && ballYPos >= playerTwoYPos && ballYPos <= playerTwoYPos + PLAYER_HEIGHT) ||
                 ((ballXPos < playerOneXPos + PLAYER_WIDTH) && ballYPos >= playerOneYPos && ballYPos <= playerOneYPos + PLAYER_HEIGHT)) {
-            ballYSpeed += 1 * Math.signum(ballYSpeed);
-            ballXSpeed += 1 * Math.signum(ballXSpeed);
+            ballYSpeed += 0.8 * Math.signum(ballYSpeed);
+            ballXSpeed += 0.8 * Math.signum(ballXSpeed);
+            // this is where the trajectory math will have to happen
             ballXSpeed *= -1;
-            ballYSpeed *= -1;
         }
 
         //draw score
