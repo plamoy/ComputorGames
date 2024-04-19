@@ -15,6 +15,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#openMineSweeper" text="Minesweeper" />
                   <MenuItem mnemonicParsing="false" onAction="#openPong" text="Pong" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDeckBuilderSim" text="DeckBuilderSim" />
                   <MenuItem mnemonicParsing="false" onAction="#openSnake" text="Snake" />
                </items>
           </Menu>

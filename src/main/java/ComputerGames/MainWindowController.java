@@ -29,6 +29,13 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
+    void openDeckBuilderSim(ActionEvent event) {
+        MultiFXMLLoder loader = new MultiFXMLLoder();
+        Pane gameArea = loader.getPane("deckBuilderBoard");
+        mainBoardBorderPane.setCenter(gameArea);
+    }
+
+    @FXML
     void openSnake(ActionEvent event) {
         // load snake fxml and controller
     }

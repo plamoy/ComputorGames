@@ -25,7 +25,6 @@ public class MinesweeperController implements Initializable {
     private final SimpleTimer st = new SimpleTimer();
     private MinesweeperBoard playBoard;
 
-
     @FXML
     private BorderPane minesweeperBorderPane;
     @FXML
