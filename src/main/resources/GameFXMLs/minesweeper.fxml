@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ComputerGames.MinesweeperController">
+   <children>
+      <BorderPane fx:id="minesweeperBorderPane" onMouseClicked="#handleBorderPaneClicked" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="minesweeper" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#buildEasyGame" prefHeight="25.0" prefWidth="65.0" text="Easy" />
+                  <Button mnemonicParsing="false" onAction="#buildMediumGame" prefHeight="25.0" prefWidth="65.0" text="Medium">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#buildHardGame" prefHeight="25.0" prefWidth="65.0" text="Hard" />
+                  <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="100.0" textAlignment="CENTER" />
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
