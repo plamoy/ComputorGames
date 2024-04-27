@@ -46,12 +46,11 @@ public class DeckBuilderSimController implements Initializable {
         AnchorPane tileMap = new AnchorPane();
         double size = 50;
         double v = Math.sqrt(3) / 2.0;
-        int count = 0;
-        int column = 0;
-        for (double y = 0; y < 9; y ++   ) {
-            //columns
-            for (double x = 0; x < width; x += (3.0 / 2.0) * size * 2) {
-                //rows
+        double column = 0;
+        int columnRows = 7;
+        for (int y = 0; y < 9; y ++) { //columns
+            int count = 0;
+            for (int x = 0; x < columnRows; x ++) { //rows
                 double[] vertices = {0, 0,
                         size, 0,
                         size * (3.0 / 2.0), size * v,
@@ -60,35 +59,28 @@ public class DeckBuilderSimController implements Initializable {
                         0 - (size / 2.0), size * v};
                 Hexagon tile = new Hexagon(vertices);
                 StackPane stack = new StackPane();
-                Text hexText = new Text(String.valueOf(count));
-                //tile.setFill(Paint.valueOf("#ffffff"));
+                Text hexText = new Text(String.valueOf(y)+","+String.valueOf(x));
+                tile.setFill(Paint.valueOf("#ffffff"));
                 tile.setStrokeWidth(2);
                 tile.setStroke(Paint.valueOf("#000000"));
                 stack.getChildren().addAll(tile, hexText);
                 stack.setLayoutX(column);
-                stack.setLayoutY(count*size*Math.sqrt(3));
+                if (y % 2 == 0) {
+                    stack.setLayoutY(count*size*Math.sqrt(3));
+                } else {
+                    stack.setLayoutY(count*size*Math.sqrt(3)+(size*Math.sqrt(3)*0.5));
+                }
                 tileMap.getChildren().add(stack);
                 tiles[count] = tile;
                 count++;
             }
+            column = column + size*(3.0/2.0);
+            if (columnRows == 7) {
+                columnRows = 6;
+            } else {
+                columnRows = 7;
+            }
         }
-//        for (double y = size * v; y < height; y += size * Math.sqrt(3)) {
-//            for (double x = size * (3.0 / 2.0); x < width; x += (3.0 / 2.0) * size * 2) {
-//                double[] vertices = {x, y,
-//                        x + size, y,
-//                        x + size * (3.0 / 2.0), y + size * v,
-//                        x + size, y + size * Math.sqrt(3),
-//                        x, y + size * Math.sqrt(3),
-//                        x - (size / 2.0), y + size * v};
-//                Hexagon tile = new Hexagon(vertices);
-//                tile.setFill(Paint.valueOf("#ffffff"));
-//                tile.setStrokeWidth(2);
-//                tile.setStroke(Paint.valueOf("#000000"));
-//                tileMap.getChildren().add(tile);
-//                tiles[count] = tile;
-//                count++;
-//            }
-//        }
         deckBuilderBorderPane.setCenter(tileMap);
         deckBuilderBorderPane.getScene().getWindow().sizeToScene();
     }
