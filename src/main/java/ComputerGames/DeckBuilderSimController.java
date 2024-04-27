@@ -3,14 +3,10 @@ package ComputerGames;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -41,8 +37,6 @@ public class DeckBuilderSimController implements Initializable {
     }
 
     public void buildCenterPane() {
-        int height = 550;
-        int width = 800;
         AnchorPane tileMap = new AnchorPane();
         double size = 50;
         double v = Math.sqrt(3) / 2.0;
@@ -59,7 +53,7 @@ public class DeckBuilderSimController implements Initializable {
                         0 - (size / 2.0), size * v};
                 Hexagon tile = new Hexagon(vertices);
                 StackPane stack = new StackPane();
-                Text hexText = new Text(String.valueOf(y)+","+String.valueOf(x));
+                Text hexText = new Text(y +","+ x);
                 tile.setFill(Paint.valueOf("#ffffff"));
                 tile.setStrokeWidth(2);
                 tile.setStroke(Paint.valueOf("#000000"));
