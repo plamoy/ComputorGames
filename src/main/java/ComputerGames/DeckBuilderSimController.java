@@ -3,6 +3,9 @@ package ComputerGames;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -28,12 +31,37 @@ public class DeckBuilderSimController implements Initializable {
 
     @FXML
     void fourPlayerButtonAction(ActionEvent event) {
+        buildPlayerTabs();
         buildCenterPane();
     }
 
     @FXML
     void resetButtonAction(ActionEvent event) {
 
+    }
+
+    public void buildPlayerTabs() {
+        TabPane tabs = new TabPane();
+        Tab playerOneTab = new Tab();
+        playerOneTab.setText("Player 1");
+        PlayerTabPane playerOnePane = new PlayerTabPane();
+        Tab playerTwoTab = new Tab();
+        playerTwoTab.setText("Player 2");
+        PlayerTabPane playerTwoPane = new PlayerTabPane();
+        Tab playerThreeTab = new Tab();
+        playerThreeTab.setText("Player 3");
+        PlayerTabPane playerThreePane = new PlayerTabPane();
+        Tab playerFourTab = new Tab();
+        playerFourTab.setText("Player 4");
+        PlayerTabPane playerFourPane = new PlayerTabPane();
+
+        playerOneTab.setContent(playerOnePane);
+        playerTwoTab.setContent(playerTwoPane);
+        playerThreeTab.setContent(playerThreePane);
+        playerFourTab.setContent(playerFourPane );
+
+        tabs.getTabs().addAll(playerOneTab,playerTwoTab,playerThreeTab,playerFourTab);
+        deckBuilderBorderPane.setLeft(tabs);
     }
 
     public void buildCenterPane() {
