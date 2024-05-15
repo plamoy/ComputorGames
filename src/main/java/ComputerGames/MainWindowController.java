@@ -16,21 +16,21 @@ public class MainWindowController implements Initializable {
 
     @FXML
     void openMineSweeper(ActionEvent event) {
-        MultiFXMLLoder loader = new MultiFXMLLoder();
+        MultiFXMLLoader loader = new MultiFXMLLoader();
         Pane gameArea = loader.getPane("minesweeper");
         mainBoardBorderPane.setCenter(gameArea);
     }
 
     @FXML
     void openPong(ActionEvent event) {
-        MultiFXMLLoder loader = new MultiFXMLLoder();
+        MultiFXMLLoader loader = new MultiFXMLLoader();
         Pane gameArea = loader.getPane("pong");
         mainBoardBorderPane.setCenter(gameArea);
     }
 
     @FXML
     void openDeckBuilderSim(ActionEvent event) {
-        MultiFXMLLoder loader = new MultiFXMLLoder();
+        MultiFXMLLoader loader = new MultiFXMLLoader();
         Pane gameArea = loader.getPane("deckBuilderBoard");
         mainBoardBorderPane.setCenter(gameArea);
     }

@@ -5,7 +5,7 @@ import javafx.scene.layout.Pane;
 
 import java.net.URL;
 
-public class MultiFXMLLoder {
+public class MultiFXMLLoader {
 
     private Pane view;
 

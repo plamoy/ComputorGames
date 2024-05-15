@@ -1,13 +1,11 @@
 package ComputerGames;
 
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Polygon;
 
 public class Hexagon extends Polygon {
@@ -61,9 +59,7 @@ public class Hexagon extends Polygon {
             @Override
             public void handle(MouseEvent event) {
                 if (!faceUp) {
-                    setFill(Paint.valueOf("#0000aa"));
-                    //setEffect(new InnerShadow(BlurType.GAUSSIAN, Color.GRAY, 2,0,0,0));
-                    //setStyle("-fx-background-color: white; -fx-effect: innershadow(gaussian, 10,0.9,0,0)");
+                    setEffect(new InnerShadow(BlurType.GAUSSIAN, Color.BLUE, 20,0,0,0));
                 }
             }
         });
@@ -72,6 +68,7 @@ public class Hexagon extends Polygon {
             public void handle(MouseEvent event) {
                 if (!faceUp) {
                     setFill(Paint.valueOf("#ffffff"));
+                    setEffect(null);
                 }
             }
         });
@@ -81,6 +78,8 @@ public class Hexagon extends Polygon {
                 if (!faceUp) {
                     setFill(Paint.valueOf("ff1100"));
                     faceUp = true;
+                } else {
+                    setFill(Paint.valueOf("#ffffff"));
                 }
             }
         });

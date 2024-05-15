@@ -3,7 +3,7 @@ package ComputerGames;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,18 +22,21 @@ public class DeckBuilderSimController implements Initializable {
 
 
     @FXML
-    private AnchorPane bottomAnchorPane;
-    @FXML
     private BorderPane deckBuilderBorderPane;
-    @FXML
-    private AnchorPane leftAnchorPane;
-    @FXML
-    private AnchorPane rightAnchorPane;
 
     @FXML
-    void fourPlayerButtonAction(ActionEvent event) {
+    void newGameButtonAction(ActionEvent event) {
         buildPlayerTabs();
         buildCenterPane();
+
+        Rectangle2D primaryScreeBounds = Screen.getPrimary().getVisualBounds();
+        deckBuilderBorderPane.getScene().getWindow().setX((primaryScreeBounds.getWidth() - deckBuilderBorderPane.getScene().getWindow().getWidth())/2);
+        deckBuilderBorderPane.getScene().getWindow().setY((primaryScreeBounds.getHeight() - deckBuilderBorderPane.getScene().getWindow().getHeight())/2);
+    }
+
+    @FXML
+    void beginButtonOnAction(ActionEvent event) {
+
     }
 
     @FXML
@@ -65,7 +69,7 @@ public class DeckBuilderSimController implements Initializable {
     }
 
     public void buildCenterPane() {
-        AnchorPane tileMap = new AnchorPane();
+        AnchorPane hexMap = new AnchorPane();
         double size = 50;
         double v = Math.sqrt(3) / 2.0;
         double column = 0;
@@ -92,7 +96,7 @@ public class DeckBuilderSimController implements Initializable {
                 } else {
                     stack.setLayoutY(count*size*Math.sqrt(3)+(size*Math.sqrt(3)*0.5));
                 }
-                tileMap.getChildren().add(stack);
+                hexMap.getChildren().add(stack);
                 tiles[count] = tile;
                 count++;
             }
@@ -103,7 +107,7 @@ public class DeckBuilderSimController implements Initializable {
                 columnRows = 7;
             }
         }
-        deckBuilderBorderPane.setCenter(tileMap);
+        deckBuilderBorderPane.setCenter(hexMap);
         deckBuilderBorderPane.getScene().getWindow().sizeToScene();
     }
 
