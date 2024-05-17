@@ -19,8 +19,10 @@ import java.util.ResourceBundle;
 public class DeckBuilderSimController implements Initializable {
 
     private Hexagon[] tiles = new Hexagon[72];
-
-
+    private PlayerTabPane[] playerTabPanes = new PlayerTabPane[4];
+    private PlayerRectangle[] playerRectangles = new PlayerRectangle[4];
+    private final String[] stickFigurePaths = {"/deckBuilderImages/Black_StickFigure.png","/deckBuilderImages/Blue_StickFigure.png","/deckBuilderImages/Pink_StickFigure.png","/deckBuilderImages/Red_StickFigure.png"};
+    private AnchorPane hexMap = new AnchorPane();
     @FXML
     private BorderPane deckBuilderBorderPane;
 
@@ -36,8 +38,22 @@ public class DeckBuilderSimController implements Initializable {
 
     @FXML
     void beginButtonOnAction(ActionEvent event) {
-
+        // shuffle market cards, loot cards, player decks
+        // deal players chosen
+        // set up board of players and flip adjacent tiles
+            // player character rectangles and way to detect what tile at or system to move
+        for (int i = 0; i < 4; i++) {
+            if (playerTabPanes[i].playerChosen) {
+                playerRectangles[i] = new PlayerRectangle();
+                playerRectangles[i].setPlayerNumber(i);
+                playerRectangles[i].setRectangleImage(String.valueOf((getClass().getResource(stickFigurePaths[i]))));
+                hexMap.getChildren().add(playerRectangles[i]);
+                playerRectangles[i].setX(i*10);
+            }
+        }
     }
+
+    // https://www.youtube.com/watch?v=ME6WfnR6zys to help with dragging player images
 
     @FXML
     void resetButtonAction(ActionEvent event) {
@@ -60,16 +76,19 @@ public class DeckBuilderSimController implements Initializable {
         PlayerTabPane playerFourPane = new PlayerTabPane();
 
         playerOneTab.setContent(playerOnePane);
+        playerTabPanes[0] = playerOnePane;
         playerTwoTab.setContent(playerTwoPane);
+        playerTabPanes[1] = playerTwoPane;
         playerThreeTab.setContent(playerThreePane);
+        playerTabPanes[2] = playerThreePane;
         playerFourTab.setContent(playerFourPane );
+        playerTabPanes[3] = playerFourPane;
 
         tabs.getTabs().addAll(playerOneTab,playerTwoTab,playerThreeTab,playerFourTab);
         deckBuilderBorderPane.setLeft(tabs);
     }
 
     public void buildCenterPane() {
-        AnchorPane hexMap = new AnchorPane();
         double size = 50;
         double v = Math.sqrt(3) / 2.0;
         double column = 0;
