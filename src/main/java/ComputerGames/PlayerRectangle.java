@@ -15,16 +15,14 @@ public class PlayerRectangle extends Rectangle {
         this.setHeight(50);
 
         this.setOnMouseDragged(event -> dragged(event,this));
-
-
     }
 
     private void dragged(MouseEvent event, PlayerRectangle playerRectangle) {
-        playerRectangle.setX(playerRectangle.getX() + event.getX());
-        playerRectangle.setY(playerRectangle.getY() + event.getY());
+        playerRectangle.setX((playerRectangle.getX() + event.getX())*(0.5)-5);
+        playerRectangle.setY((playerRectangle.getY() + event.getY())*(0.5)-12);
         playerRectangle.setTranslateX(playerRectangle.getX());
         playerRectangle.setTranslateY(playerRectangle.getY());
-        // figure out how to scale translations to size of board
+        // snap to hexagon?
     }
 
     public void setRectangleImage(String imagePath) {

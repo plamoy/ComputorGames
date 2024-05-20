@@ -20,6 +20,7 @@ public class DeckBuilderSimController implements Initializable {
 
     private Hexagon[] tiles = new Hexagon[72];
     private PlayerTabPane[] playerTabPanes = new PlayerTabPane[4];
+    private PlayerHandTabPane[] playerHandTabPanes = new PlayerHandTabPane[4];
     private PlayerRectangle[] playerRectangles = new PlayerRectangle[4];
     private final String[] stickFigurePaths = {"/deckBuilderImages/Black_StickFigure.png","/deckBuilderImages/Blue_StickFigure.png","/deckBuilderImages/Pink_StickFigure.png","/deckBuilderImages/Red_StickFigure.png"};
     private AnchorPane hexMap = new AnchorPane();
@@ -29,8 +30,8 @@ public class DeckBuilderSimController implements Initializable {
     @FXML
     void newGameButtonAction(ActionEvent event) {
         buildPlayerTabs();
+        buildPlayerHands();
         buildCenterPane();
-
         Rectangle2D primaryScreeBounds = Screen.getPrimary().getVisualBounds();
         deckBuilderBorderPane.getScene().getWindow().setX((primaryScreeBounds.getWidth() - deckBuilderBorderPane.getScene().getWindow().getWidth())/2);
         deckBuilderBorderPane.getScene().getWindow().setY((primaryScreeBounds.getHeight() - deckBuilderBorderPane.getScene().getWindow().getHeight())/2);
@@ -86,6 +87,34 @@ public class DeckBuilderSimController implements Initializable {
 
         tabs.getTabs().addAll(playerOneTab,playerTwoTab,playerThreeTab,playerFourTab);
         deckBuilderBorderPane.setLeft(tabs);
+    }
+
+    public void buildPlayerHands() {
+        TabPane tabs = new TabPane();
+        Tab playerOneTab = new Tab();
+        playerOneTab.setText("Player 1");
+        PlayerHandTabPane playerOnePane = new PlayerHandTabPane();
+        Tab playerTwoTab = new Tab();
+        playerTwoTab.setText("Player 2");
+        PlayerHandTabPane playerTwoPane = new PlayerHandTabPane();
+        Tab playerThreeTab = new Tab();
+        playerThreeTab.setText("Player 3");
+        PlayerHandTabPane playerThreePane = new PlayerHandTabPane();
+        Tab playerFourTab = new Tab();
+        playerFourTab.setText("Player 4");
+        PlayerHandTabPane playerFourPane = new PlayerHandTabPane();
+
+        playerOneTab.setContent(playerOnePane);
+        playerHandTabPanes[0] = playerOnePane;
+        playerTwoTab.setContent(playerTwoPane);
+        playerHandTabPanes[1] = playerTwoPane;
+        playerThreeTab.setContent(playerThreePane);
+        playerHandTabPanes[2] = playerThreePane;
+        playerFourTab.setContent(playerFourPane);
+        playerHandTabPanes[3] = playerFourPane;
+
+        tabs.getTabs().addAll(playerOneTab,playerTwoTab,playerThreeTab,playerFourTab);
+        deckBuilderBorderPane.setBottom(tabs);
     }
 
     public void buildCenterPane() {
