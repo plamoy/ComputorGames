@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Objects;
 
 
-public class PlayerTabPane extends AnchorPane {
+public class PlayerTabPane extends AnchorPane { //track money
 
     public int startingLocation = 1;
     public int playerClass = 4;
