@@ -12,8 +12,8 @@ public class PlayingCard extends Rectangle {
     public String cardText;
 
     public PlayingCard() {
-        this.setX(100);
-        this.setY(200);
+        this.setWidth(100);
+        this.setHeight(200);
         this.setFill(Paint.valueOf("GREEN"));
     }
 }

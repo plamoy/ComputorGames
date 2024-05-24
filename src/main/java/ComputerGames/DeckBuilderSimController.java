@@ -90,10 +90,10 @@ public class DeckBuilderSimController implements Initializable {
     }
 
     public void buildPlayerHands() {
-        TabPane tabs = new TabPane();
-        Tab playerOneTab = new Tab();
-        playerOneTab.setText("Player 1");
-        PlayerHandTabPane playerOnePane = new PlayerHandTabPane();
+        TabPane handTabs = new TabPane();
+        Tab playerOneHandTab = new Tab();
+        playerOneHandTab.setText("Player 1");
+        PlayerHandTabPane playerOneHandPane = new PlayerHandTabPane();
         Tab playerTwoTab = new Tab();
         playerTwoTab.setText("Player 2");
         PlayerHandTabPane playerTwoPane = new PlayerHandTabPane();
@@ -104,8 +104,8 @@ public class DeckBuilderSimController implements Initializable {
         playerFourTab.setText("Player 4");
         PlayerHandTabPane playerFourPane = new PlayerHandTabPane();
 
-        playerOneTab.setContent(playerOnePane);
-        playerHandTabPanes[0] = playerOnePane;
+        playerOneHandTab.setContent(playerOneHandPane);
+        playerHandTabPanes[0] = playerOneHandPane;
         playerTwoTab.setContent(playerTwoPane);
         playerHandTabPanes[1] = playerTwoPane;
         playerThreeTab.setContent(playerThreePane);
@@ -113,8 +113,9 @@ public class DeckBuilderSimController implements Initializable {
         playerFourTab.setContent(playerFourPane);
         playerHandTabPanes[3] = playerFourPane;
 
-        tabs.getTabs().addAll(playerOneTab,playerTwoTab,playerThreeTab,playerFourTab);
-        deckBuilderBorderPane.setBottom(tabs);
+        handTabs.getTabs().addAll(playerOneHandTab,playerTwoTab,playerThreeTab,playerFourTab);
+        handTabs.setPrefHeight(300);
+        deckBuilderBorderPane.setBottom(handTabs);
     }
 
     public void buildCenterPane() {
