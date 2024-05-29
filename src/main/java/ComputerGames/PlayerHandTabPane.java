@@ -5,13 +5,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 
 public class PlayerHandTabPane extends AnchorPane {
 
     // horizontal box with vertical boxs to make grids for hands deck and discard // equipped
     // button to draw card? maybe
+
+    public StackPane playerDeck = new StackPane();
+    private PlayingCard[] equipmentSlots = new PlayingCard[4];
+    public StackPane playerDiscardPile = new StackPane();
 
     PlayerHandTabPane() {
         HBox mainHBox = new HBox();
@@ -21,14 +23,25 @@ public class PlayerHandTabPane extends AnchorPane {
         HBox playerHandHBox = new HBox();
         AnchorPane playerDiscardPane = new AnchorPane();
 
-        StackPane deck = new StackPane();
-        deck.setPadding(new Insets(10));
-        PlayingCard testCard = new PlayingCard();
-        deck.getChildren().add(testCard);
+        playerDeck.setPadding(new Insets(10));
+        PlayingCard deckCard = new PlayingCard();
+        deckCard.setCardColor("green");
+        playerDeck.getChildren().add(deckCard);
 
+        for (int i = 0; i < 4; i++) {
+            equipmentSlots[i] = new PlayingCard();
+        }
 
-        playerDeckPane.getChildren().add(deck);
+        playerEquipmentHBox.getChildren().addAll(equipmentSlots);
+
+        playerDiscardPile.setPadding(new Insets(10));
+        PlayingCard discardCard = new PlayingCard();
+        discardCard.setCardColor("blue");
+        playerDiscardPile.getChildren().add(discardCard);
+
+        playerDeckPane.getChildren().add(playerDeck);
         playerHandAndEquipmentVBox.getChildren().addAll(playerEquipmentHBox, playerHandHBox);
+        playerDiscardPane.getChildren().add(playerDiscardPile);
         mainHBox.getChildren().addAll(playerDeckPane, playerHandAndEquipmentVBox, playerDiscardPane);
         this.getChildren().add(mainHBox);
     }
