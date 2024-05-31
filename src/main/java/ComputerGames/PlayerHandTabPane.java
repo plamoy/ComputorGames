@@ -8,8 +8,8 @@ import javafx.scene.layout.VBox;
 
 public class PlayerHandTabPane extends AnchorPane {
 
-    // horizontal box with vertical boxs to make grids for hands deck and discard // equipped
-    // button to draw card? maybe
+    // button to shuffle deck
+    // button to shuffle discard pile into deck
 
     public StackPane playerDeck = new StackPane();
     private PlayingCard[] equipmentSlots = new PlayingCard[4];

@@ -22,7 +22,10 @@ public class PlayerRectangle extends Rectangle {
         playerRectangle.setY((playerRectangle.getY() + event.getY())*(0.5)-12);
         playerRectangle.setTranslateX(playerRectangle.getX());
         playerRectangle.setTranslateY(playerRectangle.getY());
-        // snap to hexagon?
+    }
+
+    private void released(MouseEvent event, PlayerRectangle playerRectangle) {
+        // snap to closest hexagon center
     }
 
     public void setRectangleImage(String imagePath) {

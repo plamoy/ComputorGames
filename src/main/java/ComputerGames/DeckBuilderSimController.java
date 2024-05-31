@@ -24,6 +24,7 @@ public class DeckBuilderSimController implements Initializable {
     private PlayerRectangle[] playerRectangles = new PlayerRectangle[4];
     private final String[] stickFigurePaths = {"/deckBuilderImages/Black_StickFigure.png","/deckBuilderImages/Blue_StickFigure.png","/deckBuilderImages/Pink_StickFigure.png","/deckBuilderImages/Red_StickFigure.png"};
     private AnchorPane hexMap = new AnchorPane();
+    private double hexSize = 50;
     @FXML
     private BorderPane deckBuilderBorderPane;
 
@@ -53,8 +54,6 @@ public class DeckBuilderSimController implements Initializable {
             }
         }
     }
-
-    // https://www.youtube.com/watch?v=ME6WfnR6zys to help with dragging player images
 
     @FXML
     void resetButtonAction(ActionEvent event) {
@@ -119,7 +118,6 @@ public class DeckBuilderSimController implements Initializable {
     }
 
     public void buildCenterPane() {
-        double size = 50;
         double v = Math.sqrt(3) / 2.0;
         double column = 0;
         int columnRows = 7;
@@ -127,11 +125,11 @@ public class DeckBuilderSimController implements Initializable {
             int count = 0;
             for (int x = 0; x < columnRows; x ++) { //rows
                 double[] vertices = {0, 0,
-                        size, 0,
-                        size * (3.0 / 2.0), size * v,
-                        size, size * Math.sqrt(3),
-                        0, size * Math.sqrt(3),
-                        0 - (size / 2.0), size * v};
+                        hexSize, 0,
+                        hexSize * (3.0 / 2.0), hexSize * v,
+                        hexSize, hexSize * Math.sqrt(3),
+                        0, hexSize * Math.sqrt(3),
+                        0 - (hexSize / 2.0), hexSize * v};
                 Hexagon tile = new Hexagon(vertices);
                 StackPane stack = new StackPane();
                 Text hexText = new Text(y +","+ x);
@@ -141,15 +139,15 @@ public class DeckBuilderSimController implements Initializable {
                 stack.getChildren().addAll(tile, hexText);
                 stack.setLayoutX(column);
                 if (y % 2 == 0) {
-                    stack.setLayoutY(count*size*Math.sqrt(3));
+                    stack.setLayoutY(count*hexSize*Math.sqrt(3));
                 } else {
-                    stack.setLayoutY(count*size*Math.sqrt(3)+(size*Math.sqrt(3)*0.5));
+                    stack.setLayoutY(count*hexSize*Math.sqrt(3)+(hexSize*Math.sqrt(3)*0.5));
                 }
                 hexMap.getChildren().add(stack);
                 tiles[count] = tile;
                 count++;
             }
-            column = column + size*(3.0/2.0);
+            column = column + hexSize*(3.0/2.0);
             if (columnRows == 7) {
                 columnRows = 6;
             } else {

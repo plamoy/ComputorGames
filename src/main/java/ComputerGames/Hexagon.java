@@ -100,7 +100,8 @@ public class Hexagon extends Polygon {
     public void setSpecialTile(int specialTile) {
         this.specialTile = specialTile;
     }
-     public int getSpecialTile() {
+
+    public int getSpecialTile() {
         return specialTile;
      }
 
