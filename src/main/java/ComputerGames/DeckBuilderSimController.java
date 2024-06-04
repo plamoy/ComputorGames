@@ -26,6 +26,8 @@ public class DeckBuilderSimController implements Initializable {
     private AnchorPane hexMap = new AnchorPane();
     private double hexSize = 50;
     @FXML
+    private AnchorPane deckBuilderAnchorPane;
+    @FXML
     private BorderPane deckBuilderBorderPane;
 
     @FXML
@@ -33,6 +35,7 @@ public class DeckBuilderSimController implements Initializable {
         buildPlayerTabs();
         buildPlayerHands();
         buildCenterPane();
+        deckBuilderAnchorPane.getScene().getWindow().sizeToScene();
         Rectangle2D primaryScreeBounds = Screen.getPrimary().getVisualBounds();
         deckBuilderBorderPane.getScene().getWindow().setX((primaryScreeBounds.getWidth() - deckBuilderBorderPane.getScene().getWindow().getWidth())/2);
         deckBuilderBorderPane.getScene().getWindow().setY((primaryScreeBounds.getHeight() - deckBuilderBorderPane.getScene().getWindow().getHeight())/2);
@@ -155,7 +158,7 @@ public class DeckBuilderSimController implements Initializable {
             }
         }
         deckBuilderBorderPane.setCenter(hexMap);
-        deckBuilderBorderPane.getScene().getWindow().sizeToScene();
+        //deckBuilderBorderPane.getScene().getWindow().sizeToScene();
     }
 
     @Override

@@ -1,9 +1,6 @@
 package ComputerGames;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.Objects;
@@ -30,10 +27,17 @@ public class PlayerTabPane extends AnchorPane { //track money
         playerClassLabel.setLayoutY(150);
         Label locationStartLabel = new Label("Starting Location");
         locationStartLabel.setLayoutY(200);
+        Label levelLabel = new Label("Level");
+        levelLabel.setLayoutY(250);
+        Label skillOneLabel = new Label("Skill 1");
+        skillOneLabel.setLayoutY(300);
+        Label skillTwoLabel = new Label("Skill 2");
+        skillTwoLabel.setLayoutY(350);
+        Label skillThreeLabel = new Label("Skill 3");
+        skillThreeLabel.setLayoutY(400);
 
         Slider healthSlider = new Slider(0,10,5);
         healthSlider.setLayoutY(20);
-        healthSlider.setShowTickLabels(true);
         healthSlider.setShowTickLabels(true);
         healthSlider.setMajorTickUnit(1);
         healthSlider.setBlockIncrement(1);
@@ -41,13 +45,11 @@ public class PlayerTabPane extends AnchorPane { //track money
         Slider movementSlider = new Slider(1,6,3);
         movementSlider.setLayoutY(70);
         movementSlider.setShowTickLabels(true);
-        movementSlider.setShowTickLabels(true);
         movementSlider.setMajorTickUnit(1);
         movementSlider.setBlockIncrement(1);
 
         Slider equipmentSlotsSlider = new Slider(1,4,1);
         equipmentSlotsSlider.setLayoutY(120);
-        equipmentSlotsSlider.setShowTickLabels(true);
         equipmentSlotsSlider.setShowTickLabels(true);
         equipmentSlotsSlider.setMajorTickUnit(1);
         equipmentSlotsSlider.setBlockIncrement(1);
@@ -60,8 +62,23 @@ public class PlayerTabPane extends AnchorPane { //track money
         locationChoice.getItems().addAll("Top Left", "Top Right", "Bottom Left", "Bottom Right");
         locationChoice.setLayoutY(220);
 
+        Slider levelSlider = new Slider(1,4,1);
+        levelSlider.setLayoutY(270);
+        levelSlider.setShowTickLabels(true);
+        levelSlider.setMajorTickUnit(1);
+        levelSlider.setBlockIncrement(1);
+
+        RadioButton skillOneRadioButton = new RadioButton("skill one description");
+        skillOneRadioButton.setLayoutY(320);
+
+        RadioButton skillTwoRadioButton = new RadioButton("skill two description");
+        skillTwoRadioButton.setLayoutY(370);
+
+        RadioButton skillThreeRadioButton = new RadioButton("skill three description");
+        skillThreeRadioButton.setLayoutY(420);
+
         setStartButton.setText("Set Start");
-        setStartButton.setLayoutY(250);
+        setStartButton.setLayoutY(500);
         setStartButton.setOnAction(e -> {
             if (classChoice.getValue() != null && locationChoice.getValue() != null) {
                 classChoice.setMouseTransparent(true);
@@ -96,7 +113,11 @@ public class PlayerTabPane extends AnchorPane { //track money
             }
         });
 
-        this.getChildren().addAll(healthLabel, movementLabel, equipmentSlotsLabel, playerClassLabel, locationStartLabel, healthSlider, movementSlider, equipmentSlotsSlider, classChoice, locationChoice, setStartButton);
+        this.getChildren().addAll(healthLabel, movementLabel, equipmentSlotsLabel, playerClassLabel,
+                                        locationStartLabel, levelLabel, skillOneLabel, skillTwoLabel,
+                                        skillThreeLabel, healthSlider, movementSlider, equipmentSlotsSlider,
+                                        classChoice, locationChoice, levelSlider, skillOneRadioButton,
+                                        skillTwoRadioButton, skillThreeRadioButton, setStartButton);
     }
 
 }

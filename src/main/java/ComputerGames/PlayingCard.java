@@ -1,5 +1,7 @@
 package ComputerGames;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
@@ -13,22 +15,25 @@ public class PlayingCard extends StackPane {
     public int actions;
     public String cardText;
     public boolean faceUp = false;
-    public Rectangle playingCard = new Rectangle(100,200, Paint.valueOf("red"));
+    public Rectangle card = new Rectangle(200,200, Paint.valueOf("red"));
+    //private ImageView cardBack = new ImageView(new Image(getClass().getResource()));
 
     public PlayingCard() {
-        this.setWidth(100);
-        this.setHeight(200);
-        playingCard.setStyle(" -fx-stroke: black; -fx-stroke-width: 5;");
-        this.getChildren().add(playingCard);
+        card.setStyle(" -fx-stroke: black; -fx-stroke-width: 5;");
+        this.getChildren().add(card);
         this.setOnMouseClicked(this::clicked);
     }
 
     public void setCardColor(String cardColor) {
-        playingCard.setStyle("-fx-fill: " + cardColor + "; -fx-stroke: black; -fx-stroke-width: 5;");
+        card.setStyle("-fx-fill: " + cardColor + "; -fx-stroke: black; -fx-stroke-width: 5;");
+    }
+
+    public void setCardText(String text) {
+        this.cardText = text;
     }
 
     private void clicked(MouseEvent event) {
-
+        this.setCardColor("YELLOW");
     }
 
     /***
