@@ -6,6 +6,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
+
 public class PlayerHandTabPane extends AnchorPane {
 
     // button to shuffle deck
@@ -15,7 +17,7 @@ public class PlayerHandTabPane extends AnchorPane {
     private PlayingCard[] equipmentSlots = new PlayingCard[4];
     public StackPane playerDiscardPile = new StackPane();
 
-    PlayerHandTabPane() {
+    PlayerHandTabPane() throws IOException {
         HBox mainHBox = new HBox();
         AnchorPane playerDeckPane = new AnchorPane();
         VBox playerHandAndEquipmentVBox = new VBox();
