@@ -13,6 +13,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,7 +32,7 @@ public class DeckBuilderSimController implements Initializable {
     private BorderPane deckBuilderBorderPane;
 
     @FXML
-    void newGameButtonAction(ActionEvent event) {
+    void newGameButtonAction(ActionEvent event) throws IOException {
         buildPlayerTabs();
         buildPlayerHands();
         buildCenterPane();
@@ -91,7 +92,7 @@ public class DeckBuilderSimController implements Initializable {
         deckBuilderBorderPane.setLeft(tabs);
     }
 
-    public void buildPlayerHands() {
+    public void buildPlayerHands() throws IOException {
         TabPane handTabs = new TabPane();
         Tab playerOneHandTab = new Tab();
         playerOneHandTab.setText("Player 1");
